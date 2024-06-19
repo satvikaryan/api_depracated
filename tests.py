@@ -1,5 +1,3 @@
-# tests.py
-
 import unittest
 import json
 from unittest.mock import patch, MagicMock
