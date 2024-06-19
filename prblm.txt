@@ -1,0 +1,48 @@
+Make a backend application on your favorite framework (Flask, Django, Spring Boot, Express etc ) that does the following -
+
+Requirements
+The backend application calls any stock price provider API (there are plenty of free stock price data providers)
+
+Then create a REST API endpoint (let's call it R1) in your backend application and expose it
+
+Now consume this REST API endpoint from Postman or any other API client
+
+Write unit test for all your code
+
+Request body -
+
+jsx
+Copy code
+
+{
+
+"ticker":"AAPL"
+
+}
+
+Response body -
+jsx
+Copy code
+
+{
+
+"AAPL": 189.05
+
+}
+
+Host your backend application on a free hosting place and submit the API endpoint to us
+
+Please test all the code that it is working before submitting it
+
+Bonus Points
+These are optional requirements, but will give you some brownie points if you implement it -
+
+Implement some kind of authentication in the REST API calls (hint - HTTP header authentication tag)
+Evaluation Criteria
+Use of correct HTTP methods
+
+A working code hosted any free platform
+
+Unit test coverage of code
+
+The requirements very open ended because we want to evaluate your thinking and problem solving skills
