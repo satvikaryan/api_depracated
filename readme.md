@@ -1,3 +1,8 @@
+#Content
+**The contents of the application are in the app.py**
+**The contents of the unittest are in the tests.py script**
+**The contents of the configuration i.e. API KEY are in the config.py script**
+
 # Stock Price API Usage Guide for Postman
 
 This document provides details on how to use the Stock Price API hosted at `https://api-endpoint-vjjy.onrender.com/api/stock` using Postman.
@@ -175,7 +180,7 @@ The API provides clear error messages for various error conditions. Here are som
 ```
 
 # Stock Price API Unit Tests
-**The contents of the unittest are in the test.py script**
+
 ## Test Cases
 
 ### 1. Unauthorized Access
