@@ -31,19 +31,22 @@ To use the API in Postman, follow these steps:
    ```
    https://api-endpoint-vjjy.onrender.com/api/stock
    ```
-![Request URL and method](images/req+method.jpg)
-)
+
 
 2. **Select the Request Method:**
    - Set the method to `POST`.
+   
+![Request URL and method](images/req+method.jpg)
 
 3. **Add Headers:**
    - Key: `Authorization`
    - Value: `Bearer mysecrettoken`
 
    Ensure you add a space between `Bearer` and `mysecrettoken`.
+   
+![Headers](images/auth_token.jpg)
 
-4. **Set the Request Body:**
+5. **Set the Request Body:**
    - Select the **Body** tab.
    - Choose **raw** and set the format to **JSON**.
    - Enter the JSON body. For example:
@@ -52,6 +55,8 @@ To use the API in Postman, follow these steps:
          "ticker": "AAPL"
      }
      ```
+![Request Body](images/req_Body.jpg)
+
 
 ### Step 3: Send the Request
 
@@ -65,6 +70,7 @@ To use the API in Postman, follow these steps:
        "AAPL": "150.00"
    }
    ```
+![Response](images/api_res.jpg)
 
 ## Example Requests
 
