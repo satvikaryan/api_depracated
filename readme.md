@@ -174,6 +174,97 @@ The API provides clear error messages for various error conditions. Here are som
 }
 ```
 
+# Stock Price API Unit Tests
+**The contents of the unittest are in the test.py script**
+## Test Cases
+
+### 1. Unauthorized Access
+
+- **Scenario:** Attempt to access the API without an `Authorization` header or with an incorrect token.
+- **Expected Response:** 401 Unauthorized
+- **Response Body:**
+  ```json
+  {
+      "error": "Unauthorized"
+  }
+  ```
+
+### 2. Missing Ticker Symbol
+
+- **Scenario:** Attempt to fetch stock price without providing a ticker symbol.
+- **Expected Response:** 400 Bad Request
+- **Response Body:**
+  ```json
+  {
+      "error": "Ticker symbol is required and must be a string"
+  }
+  ```
+
+### 3. Ticker Symbol Not a String
+
+- **Scenario:** Provide a ticker symbol that is not a string.
+- **Expected Response:** 400 Bad Request
+- **Response Body:**
+  ```json
+  {
+      "error": "Ticker symbol is required and must be a string"
+  }
+  ```
+
+### 4. Successful Stock Price Retrieval
+
+- **Scenario:** Successfully fetch the stock price for a valid ticker symbol.
+- **Expected Response:** 200 OK
+- **Response Body:**
+  ```json
+  {
+      "AAPL": "189.05"
+  }
+  ```
+
+### 5. Failed Stock Price Fetch
+
+- **Scenario:** External API request fails.
+- **Expected Response:** 500 Internal Server Error
+- **Response Body:**
+  ```json
+  {
+      "error": "Failed to fetch stock price"
+  }
+  ```
+
+### 6. Stock Data Not Found
+
+- **Scenario:** External API returns no data for the given ticker symbol.
+- **Expected Response:** 404 Not Found
+- **Response Body:**
+  ```json
+  {
+      "error": "Stock data not found"
+  }
+  ```
+
+### 7. Stock Price Not Available
+
+- **Scenario:** External API returns data but the stock price is missing.
+- **Expected Response:** 404 Not Found
+- **Response Body:**
+  ```json
+  {
+      "error": "Stock price not available"
+  }
+  ```
+
+## Running the Tests
+
+To run the tests, ensure you have `unittest` installed and execute the following command:
+
+```sh
+python -m unittest test.py
+```
+
+These unit tests ensure that the Stock Price API is robust and handles various edge cases gracefully.
+
 # Stock Price API
 
 This application is a Flask-based web service that retrieves the current stock price for a given ticker symbol using the Alpha Vantage API. The application ensures secure access and proper request validation.
