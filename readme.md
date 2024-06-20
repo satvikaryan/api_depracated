@@ -1,12 +1,6 @@
-# Stock Price API Hosting and Usage Guide
+# Stock Price API Usage Guide for Postman
 
-This document provides details on how the Stock Price API is hosted and instructions on how to use it.
-
-## Hosting Information
-
-The Stock Price API is currently hosted at:
-
-**URL:** `https://api-endpoint-vjjy.onrender.com/api/stock`
+This document provides details on how to use the Stock Price API hosted at `https://api-endpoint-vjjy.onrender.com/api/stock` using Postman.
 
 ## API Endpoint
 
@@ -22,23 +16,66 @@ The Stock Price API is currently hosted at:
 **Request Body (JSON):**
 - `ticker`: The ticker symbol of the stock (string).
 
-## Usage Instructions
+## Using Postman
 
-To use the API, you need to send a POST request with the appropriate headers and body. Below are examples demonstrating how to make requests to the API.
+To use the API in Postman, follow these steps:
+
+### Step 1: Create a New Request
+
+1. Open Postman.
+2. Click on **New** and select **Request**.
+
+### Step 2: Set Up the Request
+
+1. **Enter the Request URL:**
+   ```
+   https://api-endpoint-vjjy.onrender.com/api/stock
+   ```
+
+2. **Select the Request Method:**
+   - Set the method to `POST`.
+
+3. **Add Headers:**
+   - Key: `Authorization`
+   - Value: `Bearer mysecrettoken`
+
+   Ensure you add a space between `Bearer` and `mysecrettoken`.
+
+4. **Set the Request Body:**
+   - Select the **Body** tab.
+   - Choose **raw** and set the format to **JSON**.
+   - Enter the JSON body. For example:
+     ```json
+     {
+         "ticker": "AAPL"
+     }
+     ```
+
+### Step 3: Send the Request
+
+1. Click the **Send** button to make the request.
+
+### Step 4: View the Response
+
+1. The response will appear in the lower section of the Postman window. It should look like this for a successful request:
+   ```json
+   {
+       "AAPL": "150.00"
+   }
+   ```
+
+## Example Requests
 
 ### Example 1: Fetch Stock Price for Apple Inc. (AAPL)
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--H "Authorization: Bearer mysecrettoken" \
--d '{"ticker": "AAPL"}'
+**Request Body:**
+```json
+{
+    "ticker": "AAPL"
+}
 ```
 
-**Response:**
-
+**Expected Response:**
 ```json
 {
     "AAPL": "150.00"
@@ -47,17 +84,14 @@ curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
 
 ### Example 2: Fetch Stock Price for Microsoft Corporation (MSFT)
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--H "Authorization: Bearer mysecrettoken" \
--d '{"ticker": "MSFT"}'
+**Request Body:**
+```json
+{
+    "ticker": "MSFT"
+}
 ```
 
-**Response:**
-
+**Expected Response:**
 ```json
 {
     "MSFT": "280.50"
@@ -66,17 +100,14 @@ curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
 
 ### Example 3: Fetch Stock Price for Tesla Inc. (TSLA)
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--H "Authorization: Bearer mysecrettoken" \
--d '{"ticker": "TSLA"}'
+**Request Body:**
+```json
+{
+    "ticker": "TSLA"
+}
 ```
 
-**Response:**
-
+**Expected Response:**
 ```json
 {
     "TSLA": "650.30"
@@ -89,16 +120,14 @@ The API provides clear error messages for various error conditions. Here are som
 
 ### Example: Missing Authorization Header
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--d '{"ticker": "AAPL"}'
+**Request Body:**
+```json
+{
+    "ticker": "AAPL"
+}
 ```
 
 **Response:**
-
 ```json
 {
     "error": "Unauthorized"
@@ -107,17 +136,14 @@ curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
 
 ### Example: Incorrect Ticker Format
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--H "Authorization: Bearer mysecrettoken" \
--d '{"ticker": 12345}'
+**Request Body:**
+```json
+{
+    "ticker": 12345
+}
 ```
 
 **Response:**
-
 ```json
 {
     "error": "Ticker symbol is required and must be a string"
@@ -126,17 +152,14 @@ curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
 
 ### Example: Stock Data Not Found
 
-**Request:**
-
-```sh
-curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
--H "Content-Type: application/json" \
--H "Authorization: Bearer mysecrettoken" \
--d '{"ticker": "UNKNOWN"}'
+**Request Body:**
+```json
+{
+    "ticker": "UNKNOWN"
+}
 ```
 
 **Response:**
-
 ```json
 {
     "error": "Stock data not found"
@@ -159,49 +182,6 @@ The goal of this application is to provide an easy and secure way to fetch real-
 
 **Description:** Retrieves the current stock price for a given ticker symbol.
 
-**Request Headers:**
-- `Authorization`: Bearer token required for authentication. The token value must be `mysecrettoken`.
-
-**Request Body (JSON):**
-- `ticker`: The ticker symbol of the stock (string).
-
-**Responses:**
-
-- `200 OK`: Returns the stock price.
-  ```json
-  {
-      "AAPL": "150.00"
-  }
-  ```
-- `400 Bad Request`: If the `ticker` is missing or not a string.
-  ```json
-  {
-      "error": "Ticker symbol is required and must be a string"
-  }
-  ```
-- `401 Unauthorized`: If the authorization header is missing or incorrect.
-  ```json
-  {
-      "error": "Unauthorized"
-  }
-  ```
-- `404 Not Found`: If the stock data or price is not found.
-  ```json
-  {
-      "error": "Stock data not found"
-  }
-  ```
-  ```json
-  {
-      "error": "Stock price not available"
-  }
-  ```
-- `500 Internal Server Error`: If there is an issue fetching the stock price.
-  ```json
-  {
-      "error": "Failed to fetch stock price"
-  }
-  ```
 
 ## Installation and Setup
 
@@ -256,6 +236,3 @@ The response will be:
 
 The application includes robust error handling to ensure that users receive meaningful messages for various error conditions, such as missing authorization, incorrect request format, or issues with the external API.
 
-## Conclusion
-
-This application provides a secure and reliable way to fetch stock prices, making it a useful tool for anyone needing real-time stock data. The clear structure and comprehensive error handling make it user-friendly and robust.
