@@ -31,6 +31,8 @@ To use the API in Postman, follow these steps:
    ```
    https://api-endpoint-vjjy.onrender.com/api/stock
    ```
+![Request URL and method](images/![Screenshot](images/screenshot.png)
+)
 
 2. **Select the Request Method:**
    - Set the method to `POST`.
