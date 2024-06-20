@@ -52,7 +52,7 @@ To use the API in Postman, follow these steps:
    - Enter the JSON body. For example:
      ```json
      {
-         "ticker": "AAPL"
+         "ticker": "MSFT"
      }
      ```
 ![Request Body](images/req_Body.jpg)
@@ -67,7 +67,7 @@ To use the API in Postman, follow these steps:
 1. The response will appear in the lower section of the Postman window. It should look like this for a successful request:
    ```json
    {
-       "AAPL": "150.00"
+       "MSFT": "150.00"
    }
    ```
 ![Response](images/api_res.jpg)
