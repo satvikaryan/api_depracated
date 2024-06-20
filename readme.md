@@ -62,7 +62,7 @@ The goal of this application is to provide an easy and secure way to fetch real-
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/stock-price-api.git
+   git clone https://github.com/satvikaryan/api_endpoint
    cd stock-price-api
    ```
 
