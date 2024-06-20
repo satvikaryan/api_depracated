@@ -46,7 +46,7 @@ To use the API in Postman, follow these steps:
    
 ![Headers](images/auth_token.jpg)
 
-5. **Set the Request Body:**
+4. **Set the Request Body:**
    - Select the **Body** tab.
    - Choose **raw** and set the format to **JSON**.
    - Enter the JSON body. For example:
