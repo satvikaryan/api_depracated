@@ -1,3 +1,148 @@
+# Stock Price API Hosting and Usage Guide
+
+This document provides details on how the Stock Price API is hosted and instructions on how to use it.
+
+## Hosting Information
+
+The Stock Price API is currently hosted at:
+
+**URL:** `https://api-endpoint-vjjy.onrender.com/api/stock`
+
+## API Endpoint
+
+### `/api/stock`
+
+**Method:** `POST`
+
+**Description:** Retrieves the current stock price for a given ticker symbol.
+
+**Headers:**
+- `Authorization`: Bearer token required for authentication. The token value must be `mysecrettoken`.
+
+**Request Body (JSON):**
+- `ticker`: The ticker symbol of the stock (string).
+
+## Usage Instructions
+
+To use the API, you need to send a POST request with the appropriate headers and body. Below are examples demonstrating how to make requests to the API.
+
+### Example 1: Fetch Stock Price for Apple Inc. (AAPL)
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mysecrettoken" \
+-d '{"ticker": "AAPL"}'
+```
+
+**Response:**
+
+```json
+{
+    "AAPL": "150.00"
+}
+```
+
+### Example 2: Fetch Stock Price for Microsoft Corporation (MSFT)
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mysecrettoken" \
+-d '{"ticker": "MSFT"}'
+```
+
+**Response:**
+
+```json
+{
+    "MSFT": "280.50"
+}
+```
+
+### Example 3: Fetch Stock Price for Tesla Inc. (TSLA)
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mysecrettoken" \
+-d '{"ticker": "TSLA"}'
+```
+
+**Response:**
+
+```json
+{
+    "TSLA": "650.30"
+}
+```
+
+## Error Handling
+
+The API provides clear error messages for various error conditions. Here are some examples:
+
+### Example: Missing Authorization Header
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-d '{"ticker": "AAPL"}'
+```
+
+**Response:**
+
+```json
+{
+    "error": "Unauthorized"
+}
+```
+
+### Example: Incorrect Ticker Format
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mysecrettoken" \
+-d '{"ticker": 12345}'
+```
+
+**Response:**
+
+```json
+{
+    "error": "Ticker symbol is required and must be a string"
+}
+```
+
+### Example: Stock Data Not Found
+
+**Request:**
+
+```sh
+curl -X POST https://api-endpoint-vjjy.onrender.com/api/stock \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer mysecrettoken" \
+-d '{"ticker": "UNKNOWN"}'
+```
+
+**Response:**
+
+```json
+{
+    "error": "Stock data not found"
+}
+```
+
 # Stock Price API
 
 This application is a Flask-based web service that retrieves the current stock price for a given ticker symbol using the Alpha Vantage API. The application ensures secure access and proper request validation.
