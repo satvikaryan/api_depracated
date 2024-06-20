@@ -1,6 +1,6 @@
 # Content
 
--**The contents of the application are in the app.py**
+-**The contents of the application are in ** 'app.py'
 -**The contents of the unittest are in the tests.py script**
 -**The contents of the configuration i.e. API KEY are in the config.py script**
 
